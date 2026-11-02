@@ -26,10 +26,33 @@ Zuma is a personal device mesh built in phases. Every change starts as an issue 
 
 ## 3. Branches and commits
 
-- Branch from `main`: `<type>/<issue-number>-<short-slug>` (e.g. `feat/5-transport-skeleton`).
-- Commits follow [Conventional Commits](https://www.conventionalcommits.org/): `feat(protocol): ...`, `fix(core): ...`, `test(...)`, `docs(...)`, `refactor(...)`, `chore(...)`.
+`main` is protected: it only changes through reviewed pull requests. Work on a branch, never directly on `main`.
+
+Start from an up-to-date `main`:
+
+```bash
+git switch main
+git pull --ff-only
+git switch -c feat/5-transport-skeleton
+```
+
+- Branch name: `<type>/<issue-number>-<short-slug>`, where `<type>` is `feat`, `fix`, `docs`, `test`, `refactor` or `chore` (e.g. `feat/5-transport-skeleton`, `fix/12-pin-check`).
+- One branch per issue. Do not mix unrelated changes.
+- Keep branches short-lived. Before opening the PR, rebase on `main`:
+
+```bash
+git fetch origin
+git rebase origin/main
+```
+
+  Do not merge `main` into your branch just to update it.
+- Push the branch and open a pull request. While a review is in progress, prefer adding commits over force-pushing; the merge squashes the branch anyway.
+- After merge, delete the branch (locally and on GitHub) and update `main`.
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+- `feat(protocol): ...`, `fix(core): ...`, `test(protocol): ...`, `docs: ...`, `refactor(...)`, `chore(...)`.
 - One logical change per commit. Do not mix unrelated work.
-- Keep branches short-lived. Rebase on `main` when needed; do not merge `main` into a feature branch just to update it.
 
 ## 4. Pull requests
 
@@ -66,8 +89,8 @@ Feedback:
 
 Merge:
 
-- After one approval and green checks. The author merges (squash or rebase; no merge commits on `main`).
-- Delete the branch after merge.
+- After one approval and green checks, the author merges with **squash** (linear history on `main`).
+- Delete the branch after merge, locally and on GitHub.
 
 ## 6. Definition of Done
 
