@@ -8,13 +8,7 @@
 
 ## How it was tested
 
-<!-- Commands run and new tests added. -->
-
-```text
-cargo fmt --check
-cargo clippy --all-targets -- -D warnings
-cargo test
-```
+<!-- Commands run, new tests added, and the result. -->
 
 ## Risks and out of scope
 
@@ -24,6 +18,6 @@ cargo test
 
 - [ ] Scope matches the linked issue.
 - [ ] Tests cover the happy path and the failure paths.
-- [ ] `fmt`, `clippy` and `test` pass locally.
+- [ ] The repository checks pass locally.
 - [ ] Docs updated if behavior or public API changed.
 - [ ] Follow-up work is filed as an issue, not left as a TODO.
